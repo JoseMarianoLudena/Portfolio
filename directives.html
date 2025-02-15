@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Custom Directives Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+    <div ng-controller="MainCtrl">
+        <h2>Main App</h2>
+        
+        <!-- Using a directive with a dynamic template -->
+        <user-profile></user-profile>
+
+        <!-- Directive with an isolate scope (@ one-way binding) -->
+        <welcome-message message="Welcome to AngularJS Directives!"></welcome-message>
+
+        <!-- Directive with an isolate scope (= two-way binding) -->
+        <user-card user="person"></user-card>
+        <p>Person's Age in Main Scope: {{ person.age }}</p>
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        // Main Controller
+        app.controller("MainCtrl", function($scope) {
+            $scope.person = { name: 'John Doe', age: 30 };
+        });
+
+        // User Profile Directive with templateUrl
+        app.directive('userProfile', function() {
+            return {
+                restrict: 'E',
+                templateUrl: 'user-profile.html'
+            };
+        });
+
+        // Welcome Message Directive with One-Way Binding (@)
+        app.directive('welcomeMessage', function() {
+            return {
+                restrict: 'E',
+                scope: { message: '@' },
+                template: '<h3>{{ message }}</h3>'
+            };
+        });
+
+        // User Card Directive with Two-Way Binding (=)
+        app.directive('userCard', function() {
+            return {
+                restrict: 'E',
+                scope: { user: '=' },
+                template: '<h2>{{ user.name }}</h2><button ng-click="user.age = user.age + 3">Increase Age</button>'
+            };
+        });
+    </script>
+
+</body>
+</html>

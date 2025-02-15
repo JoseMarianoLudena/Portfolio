@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS $q and AJAX Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="MyController">
+
+    <h2>AngularJS $q, Promises, and AJAX Example</h2>
+    <button ng-click="loadData()">Fetch Data</button>
+    <p>{{ dataMessage }}</p>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.controller("MyController", function($scope, $http, $q) {
+            
+            // Function that returns a promise using $q
+            function fetchData() {
+                var deferred = $q.defer();  // Create a deferred object
+                
+                // Simulating an asynchronous operation
+                setTimeout(function() {
+                    var success = Math.random() > 0.5;  // Random success or failure
+                    
+                    if (success) {
+                        deferred.resolve("Data loaded successfully!");
+                    } else {
+                        deferred.reject("Failed to load data.");
+                    }
+                }, 3000);
+
+                return deferred.promise;  // Return the promise
+            }
+
+            // Function to fetch data using $http (AJAX)
+            function fetchDataFromServer() {
+                var deferred = $q.defer();  
+
+                $http.get("https://jsonplaceholder.typicode.com/posts/1")
+                    .then(function(response) {
+                        deferred.resolve(response.data);  // Resolve promise with data
+                    })
+                    .catch(function(error) {
+                        deferred.reject("Error fetching data: " + error.status);
+                    });
+
+                return deferred.promise;
+            }
+
+            // Function to call when clicking "Fetch Data"
+            $scope.loadData = function() {
+                $scope.dataMessage = "Loading...";
+
+                // Using the first promise (simulated async task)
+                fetchData().then(
+                    function success(message) {
+                        console.log("Success:", message);
+                        $scope.dataMessage = message;
+
+                        // Now fetch data from server
+                        return fetchDataFromServer();
+                    }
+                ).then(
+                    function serverSuccess(data) {
+                        console.log("Server Data:", data);
+                        $scope.dataMessage = "Server Data: " + data.title;
+                    }
+                ).catch(
+                    function error(message) {
+                        console.log("Error:", message);
+                        $scope.dataMessage = message;
+                    }
+                );
+            };
+        });
+    </script>
+</body>
+</html>

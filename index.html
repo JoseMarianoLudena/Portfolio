@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Mariano Ludeña Limas - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> 
+    <script src="app.js"></script>
+
+</head>
+<body ng-app="portfolioApp">
+
+    <header>
+        <h1>Jose Mariano Ludeña Limas</h1> 
+        
+        <nav class = "navbar">
+            <ul class ="nav-links">
+                <li><a href="#!/about">About Me</a></li>
+
+                <li><a href="#!/projects">Projects</a></li>
+
+                <li><a href="#!/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ng-view will load the appropriate template based on the route -->
+    <div ng-view>
+        
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2025 Jose Mariano Ludeña Limas | All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
