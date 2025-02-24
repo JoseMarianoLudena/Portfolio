@@ -61,8 +61,8 @@ app.controller('ProjectsController', function($scope) {
             description: "I developed a Tic-Tac-Toe game with interactive gameplay, win detection, and a restart feature. 🎮✨"
         },
         {
-            title: "Bucket List",
-            description: "A user-friendly list bicket app that displays real-time data (temperature, humidity, etc.) using API calls for current and forecasted weather."
+            title: "Object Detector",
+            description: "An application of Machine and Deep Learning in Python. Object recognition from a set of images.."
         }
     ];
 });
