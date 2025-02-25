@@ -32,7 +32,8 @@ app.controller('AboutController', function($scope) {
         { name: 'C++', icon: 'CPlusPlus.svg' },
         { name: 'Git', icon: 'git.svg' },
         { name: 'HTML', icon: 'html.svg' },
-        { name: 'CSS', icon: 'css.svg' }
+        { name: 'CSS', icon: 'css.svg' },
+        { name: 'TypeScript', icon: 'typescript.svg' }
     ];
     $scope.frameworks=[
             { name: "React", icon: "reacrt.svg" },
