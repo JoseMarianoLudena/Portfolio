@@ -63,7 +63,19 @@ app.controller('ProjectsController', function($scope) {
         },
         {
             title: "Object Detector",
-            description: "An application of Machine and Deep Learning in Python. Object recognition from a set of images.."
+            description: "An application of Machine and Deep Learning in Python. Object recognition from a set of images."
+        },
+        {
+            title: "Generative Design for Architecture",
+            description: "Developed a simple Python-based generative design model to optimize architectural layouts using data-driven decision-making."
+        },
+        {
+            title: "Product Catalog",
+            description: "Developed a responsive e-commerce product catalog using React, featuring detailed product listings, filtering options, and a seamless user interface. "
+        },
+        {
+            title: "Energy Optimization Platform",
+            description: "Developed a simple Python-based energy system modelling project using data analytics to simulate resource-efficient energy strategies."
         }
     ];
 });

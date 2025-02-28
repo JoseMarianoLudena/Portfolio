@@ -242,3 +242,8 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
 }
+
+.smaller-energy-pic {
+    width: 800px; /* Adjust to your preferred size */
+    height: auto;
+}
